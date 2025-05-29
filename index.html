@@ -143,6 +143,12 @@
             </div>
         </div>
     </footer>
+    <script>
+        // Redirect to registration if not registered
+        if (!localStorage.getItem('isRegistered')) {
+          window.location.href = "registration.html";
+        }
+      </script>
     <script src="js/script.js"></script>
 </body>
 </html>
