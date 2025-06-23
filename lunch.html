@@ -20,6 +20,12 @@
                     <li><a href="lunch.html">Lunch</a></li>
                     <li><a href="dinner.html">Dinner</a></li>
                     <li><a href="instant.html">Instant</a></li>
+                    <li class="auth-links">
+                        <a href="login.html" id="loginBtn" class="auth-btn">Login</a>
+                        <a href="registration.html" id="registerBtn" class="auth-btn">Register</a>
+                        <a href="#" id="profileBtn" class="auth-btn hidden">My Profile</a>
+                        <a href="#" id="logoutBtn" class="auth-btn hidden">Logout</a>
+                    </li>
                 </ul>
             </nav>
         </div>
@@ -35,8 +41,8 @@
     </section>
 
     <!-- Toggle Section -->
-    <section class="section">
-        <div class="container">
+    <section class="section" id="meal-section">
+        <div class="container" id="meal-container">
             <div class="toggle-container">
                 <!-- Meal Type Toggle -->
                 <div class="toggle-section">
@@ -71,34 +77,84 @@
 
             <!-- Meal Cards -->
             <div class="meal-cards">
-                <div class="meal-card">
+                <div class="meal-card" data-type="veg" data-preference="lunch">
                     <img src="assets/veg thali.jpg" alt="Standard Veg Lunch Thali" class="meal-img">
                     <div class="meal-content">
                         <h3 class="meal-title">Standard Veg Lunch Thali</h3>
-                        <p class="meal-description">Rice, 2 rotis, dal, mixed vegetable curry, raita, and pickle.</p>
-                        <div class="meal-price">₹150</div>
-                        <a href="Cart.html" class="btn">Order Now</a>
+                        <p class="meal-description">4 rotis, 2 Sabji, dal, Rice, salad and pickle.</p>
+                        <div class="meal-price">₹85</div>
+                        <div class="subscription-price"></div>
+                        <a href="order.html" class="btn order-now-btn">Order Now</a>
                     </div>
                 </div>
 
-                <div class="meal-card">
+                <div class="meal-card" data-type="veg" data-preference="lunch">
                     <img src="assets/veg thali simple.jpg" alt="Executive Lunch Box" class="meal-img">
                     <div class="meal-content">
                         <h3 class="meal-title">Executive Lunch Box</h3>
-                        <p class="meal-description">Jeera rice, 3 rotis, paneer curry, dal tadka, and seasonal vegetable.</p>
-                        <div class="meal-price">₹180</div>
-                        <a href="Cart.html" class="btn">Order Now</a>
+                        <p class="meal-description">4 rotis, 2 Sabji, dal tadka, Rice, 1 Sweet, Raita, Salad and pickle</p>
+                        <div class="meal-price">₹125</div>
+                        <div class="subscription-price"></div>
+                        <a href="order.html" class="btn order-now-btn">Order Now</a>
                     </div>
                 </div>
 
-                <div class="meal-card">
+                <div class="meal-card" data-type="veg" data-preference="lunch">
+                    <img src="assets/veg thali simple.jpg" alt="Corporate Premium" class="meal-img">
+                    <div class="meal-content">
+                        <h3 class="meal-title">Corporate Premium
+                        </h3>
+                        <p class="meal-description">1 starter, 1 beverage, 1 paneer curry, 1 dry sabji, 4 roti, 1 dal, 1 rice, 1 raita / Dahi, 1 sweet, aachar, salad, papad</p>
+                        <div class="meal-price">₹199</div>
+                        <div class="subscription-price"></div>
+                        <a href="order.html" class="btn order-now-btn">Order Now</a>
+                    </div>
+                </div>
+                <div class="meal-card" data-type="veg" data-preference="instant">
+                    <img src="assets/eco%20meal%20veg.webp" alt="Corporate Premium" class="meal-img">
+                    <div class="meal-content">
+                        <h3 class="meal-title">Eco Meal
+                        </h3>
+                        <p class="meal-description">Paneer Curry : 100 gm, Dry Sabji: 100 gm, Butter roti: 4 nos., Rice : 80 gm, Dal : 100 gm, Salad.</p>
+                        <div class="meal-price">₹125</div>
+                        <div class="subscription-price"></div>
+                        <a href="order.html" class="btn order-now-btn">Order Now</a>
+                    </div>
+                </div>
+
+                <div class="meal-card" data-type="non-veg" data-preference="lunch">
                     <img src="assets/non veg thali.jpg" alt="Non-Veg Lunch Special" class="meal-img">
                     <div class="meal-content">
                         <h3 class="meal-title">Non-Veg Lunch Special</h3>
-                        <p class="meal-description">Rice, 2 rotis, chicken curry, yellow dal, salad, and dessert.</p>
+                        <p class="meal-description">4 rotis, 2 Sabji, Chicken Curry, Yellow Dal, Rice, Salad and Seasonal Vegetable.</p>
                         <div class="meal-price">₹200</div>
-                        <a href="Cart.html" class="btn">Order Now</a>
+                        <div class="subscription-price"></div>
+                        <a href="order.html" class="btn order-now-btn">Order Now</a>
                     </div>
+                </div>
+                    <div class="meal-card" data-type="non-veg" data-preference="lunch">
+                        <img src="assets/eco%20meal%20nonveg.jpeg" alt="Non-Veg Lunch Special" class="meal-img">
+                        <div class="meal-content">
+                            <h3 class="meal-title">Eco Meal</h3>
+                            <p class="meal-description">Chicken Curry : 180 gm, Butter Roti: 4 nos. Rice: 80 gm, Dal : 100 gm, Salad.
+                            </p>
+                            <div class="meal-price">₹149</div>
+                            <div class="subscription-price"></div>
+                            <a href="order.html" class="btn order-now-btn">Order Now</a>
+                        </div>
+                    </div>
+                    <div class="meal-card" data-type="non-veg" data-preference="lunch">
+                        <img src="assets/non veg thali.jpg" alt="Chicken eco meal" class="meal-img">
+                        <div class="meal-content">
+                            <h3 class="meal-title">Chicken eco meal
+                            </h3>
+                            <p class="meal-description">1 Chicken curry, 4 roti, 1 rice, 1 dal & salad
+                            </p>
+                            <div class="meal-price">₹125</div>
+                            <div class="subscription-price"></div>
+                            <a href="order.html" class="btn order-now-btn">Order Now</a>
+                        </div>
+
                 </div>
             </div>
         </div>
@@ -125,8 +181,8 @@
                 <h3>Contact Us</h3>
                 <ul>
                     <li>Email: info@dailytiffin.co</li>
-                    <li>Phone: +91 98765 43210</li>
-                    <li>Address: 123 Tiffin Street, Mumbai, India</li>
+                    <li>Phone: 0731-6981639</li>
+                    <li>Address: TFCS Kichen Solutions Ltd. NextCoworks -Ab road Slice 6, aranya nagar scheme 78, vijay nagar, indore 452010</li>
                 </ul>
             </div>
         </div>
@@ -136,6 +192,93 @@
             </div>
         </div>
     </footer>
+    <!-- Login Modal -->
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Login</h2>
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="loginEmail">Email</label>
+                    <input type="email" id="loginEmail" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="loginPassword">Password</label>
+                    <input type="password" id="loginPassword" name="password" required>
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn">Login</button>
+                </div>
+                <div id="loginMessage" class="message"></div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Register Modal -->
+    <div id="registerModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Register</h2>
+            <form id="registerForm">
+                <div class="form-group">
+                    <label for="registerName">Name</label>
+                    <input type="text" id="registerName" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="registerEmail">Email</label>
+                    <input type="email" id="registerEmail" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="registerPassword">Password</label>
+                    <input type="password" id="registerPassword" name="password" required>
+                </div>
+                <div class="form-group">
+                    <label for="registerPhone">Phone</label>
+                    <input type="tel" id="registerPhone" name="phone" required>
+                </div>
+                <div class="form-group">
+                    <label for="registerAddress">Address</label>
+                    <textarea id="registerAddress" name="address" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label>User Type</label>
+                    <select id="registerUserType" name="userType">
+                        <option value="student">Student</option>
+                        <option value="corporate">Corporate</option>
+                        <option value="household">Household</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn">Register</button>
+                </div>
+                <div id="registerMessage" class="message"></div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Profile Modal -->
+    <div id="profileModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>My Profile</h2>
+            <div id="profileInfo">
+                <p><strong>Name:</strong> <span id="profileName"></span></p>
+                <p><strong>Email:</strong> <span id="profileEmail"></span></p>
+                <p><strong>Phone:</strong> <span id="profilePhone"></span></p>
+                <p><strong>Address:</strong> <span id="profileAddress"></span></p>
+                <p><strong>User Type:</strong> <span id="profileUserType"></span></p>
+            </div>
+            <h3>My Orders</h3>
+            <div id="userOrders">
+                <p>Loading orders...</p>
+            </div>
+            <h3>My Subscriptions</h3>
+            <div id="userSubscriptions">
+                <p>Loading subscriptions...</p>
+            </div>
+        </div>
+    </div>
+    <script src="js/api.js"></script>
     <script src="js/script.js"></script>
 </body>
 </html>

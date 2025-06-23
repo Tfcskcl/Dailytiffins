@@ -1,0 +1,158 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Login | Daily Tiffin & Co.</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Montserrat', sans-serif;
+      background: url('assets/banner 1.jpg') no-repeat center center/cover;
+      color: #333;
+    }
+    .overlay {
+      background-color: rgba(255, 255, 255, 0.92);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+    .register-box {
+      background-color: #fff;
+      padding: 40px;
+      border-radius: 16px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      max-width: 400px;
+      width: 100%;
+      text-align: center;
+    }
+    .form-group {
+      text-align: left;
+      margin-bottom: 20px;
+    }
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 600;
+    }
+    input {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+    }
+    .submit-btn {
+      background-color: #f4b400;
+      color: #fff;
+      border: none;
+      padding: 12px;
+      border-radius: 8px;
+      width: 100%;
+      cursor: pointer;
+    }
+    .submit-btn:hover {
+      background-color: #e09b00;
+    }
+    .footer-note {
+      margin-top: 20px;
+      font-size: 13px;
+    }
+    .message {
+      margin-top: 20px;
+      padding: 10px;
+      border-radius: 8px;
+    }
+    .success { background-color: #d4edda; color: #155724; }
+    .error { background-color: #f8d7da; color: #721c24; }
+  </style>
+</head>
+<body>
+<div class="overlay">
+  <div class="register-box">
+    <img src="assets/Daily_Tiffin_226x223.png" alt="Logo" style="width: 80px; margin-bottom: 15px;">
+    <h2>Login via OTP</h2>
+    <form id="loginForm">
+      <div class="form-group">
+        <label for="email">Email Address</label>
+        <input type="email" id="email" required>
+      </div>
+      <div class="form-group">
+        <label for="phone">Phone Number</label>
+        <input type="tel" id="phone" required>
+      </div>
+      <button type="submit" class="submit-btn">Request OTP</button>
+    </form>
+    <form id="otpForm" style="display:none; margin-top: 20px;">
+      <div class="form-group">
+        <label for="otp">Enter OTP</label>
+        <input type="text" id="otp" maxlength="6" required>
+      </div>
+      <button type="submit" class="submit-btn">Verify OTP</button>
+    </form>
+    <div class="footer-note">
+      New user? <a href="registration.html">Register here</a>
+    </div>
+    <div id="messageBox" class="message" style="display: none;"></div>
+  </div>
+</div>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const loginForm = document.getElementById('loginForm');
+    const otpForm = document.getElementById('otpForm');
+    const messageBox = document.getElementById('messageBox');
+    loginForm.addEventListener('submit', function (e) {
+      e.preventDefault();
+      const email = document.getElementById('email').value.trim();
+      const phone = document.getElementById('phone').value.trim();
+      fetch('login_request_otp.php', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, phone })
+      })
+        .then(response => response.json())
+        .then(data => {
+          messageBox.textContent = data.message;
+          messageBox.className = 'message ' + (data.success ? 'success' : 'error');
+          messageBox.style.display = 'block';
+          if (data.success) {
+            loginForm.style.display = 'none';
+            otpForm.style.display = 'block';
+            if (data.otp_debug) alert("Your OTP is: " + data.otp_debug);
+          }
+        })
+        .catch(() => {
+          messageBox.textContent = 'Something went wrong while requesting OTP.';
+          messageBox.className = 'message error';
+          messageBox.style.display = 'block';
+        });
+    });
+    otpForm.addEventListener('submit', function (e) {
+      e.preventDefault();
+      const otp = document.getElementById('otp').value.trim();
+      fetch('login_verify_otp.php', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ otp })
+      })
+        .then(response => response.json())
+        .then(data => {
+          messageBox.textContent = data.message;
+          messageBox.className = 'message ' + (data.success ? 'success' : 'error');
+          messageBox.style.display = 'block';
+          if (data.success) {
+            setTimeout(() => window.location.href = 'dashboard.php', 1500);
+          }
+        })
+        .catch(() => {
+          messageBox.textContent = 'OTP verification failed.';
+          messageBox.className = 'message error';
+          messageBox.style.display = 'block';
+        });
+    });
+  });
+</script>
+</body>
+</html>
